@@ -1,0 +1,100 @@
+/* header-nav */
+.header-input {
+    width: 30%;
+}
+
+.keyword-input {
+    padding: 8px 16px;
+    height: 40px;
+    width: 100%;
+    font-size: 18px;
+}
+
+.nav-buttons {
+    width: 25%;
+    padding-left: 30px;
+}
+
+.nav-buttons form {
+    display: inline-block;
+}
+
+.logout__btn button,
+.mypage-link button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sell-link button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 6px 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sell-link button:hover {
+    background-color: #f2f2f2;
+}
+
+/* content */
+.content-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.address-edit__form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.form-group input[type="text"] {
+    height: 40px;
+    padding: 8px 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    height: 48px;
+    background-color: #ff5c5c;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #ff3d3d;
+}
+
+.form__error-message {
+    font-size: 12px;
+    color: red;
+    margin-top: 5px;
+    height: 1em;
+}

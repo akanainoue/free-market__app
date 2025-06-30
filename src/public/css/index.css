@@ -1,0 +1,98 @@
+svg.w-5.h-5 {
+    /*paginateメソッドの矢印の大きさ調整のために追加*/
+    width: 30px;
+    height: 30px;
+}
+
+.header-input {
+    width: 30%;
+}
+.keyword-input {
+    padding: 8px 16px;
+    height: 40px;
+    width: 100%;
+    font-size: 18px;
+}
+.nav-buttons {
+    width: 25%;
+    padding-left: 30px;
+}
+.nav-buttons form {
+    display: inline-block;
+}
+
+.logout__btn button,
+.mypage-link button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sell-link button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 6px 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sell-link button:hover {
+    background-color: #f2f2f2;
+}
+
+.tab-menu {
+    padding-top: 30px;
+    padding-left: 50px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.658);
+}
+
+.tab-menu>a {
+    text-decoration: none;
+    display: inline-block;
+    margin-left:50px ;
+    font-size: 20px;
+    color: #000;
+}
+.item-list {
+    margin: 40px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    justify-items: center;
+
+}
+
+.item {
+    margin:30px;
+}
+
+.item-image {
+    width: 300px;
+    height: auto;
+}
+
+.pagination {
+    margin:30px auto;
+    text-align: center;
+}
+
+.sold-label {
+    background-color: red;
+    color: white;
+    padding: 2px 6px;
+    font-size: 12px;
+    border-radius: 3px;
+}
+
+.tab-menu a.active {
+    color: red;
+}
+
+.item-link {
+    text-decoration: none;
+    font-size: 18px;
+    color: black;
+}

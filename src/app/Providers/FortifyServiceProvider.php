@@ -28,26 +28,26 @@ class FortifyServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Fortify::createUsersUsing(CreateNewUser::class);
+        Fortify::createUsersUsing(\App\Http\Controllers\Auth\RegisterController::class);
 
-        Fortify::registerView(function () {
-            return view('auth.register');
-        });
-        Fortify::loginView(function () {
-            return view('auth.login');
-        });
+        // Fortify::registerView(function () {
+        //     return view('auth.register');
+        // });
+        // Fortify::loginView(function () {
+        //     return view('auth.login');
+        // });
 
 
-        Fortify::authenticateUsing(function (LoginRequest $request){
-            $credentials = $request->only('email', 'password');
-            if (Auth::attempt($credentials)){
-                return Auth::user();
-            }
-            throw ValidationException::withMessages([
-                'email' => ['ログイン情報が登録されていません'],
-            ]);
+        // Fortify::authenticateUsing(function (LoginRequest $request){
+        //     $credentials = $request->only('email', 'password');
+        //     if (Auth::attempt($credentials)){
+        //         return Auth::user();
+        //     }
+        //     throw ValidationException::withMessages([
+        //         'email' => ['ログイン情報が登録されていません'],
+        //     ]);
             // フィールド名は password でもいいが、一般的に email にまとめる
-        });
+        // });
 
         RateLimiter::for('login', function (Request $request) {
             $email = (string) $request->email;

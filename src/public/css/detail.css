@@ -1,0 +1,201 @@
+.product-detail-container {
+    display: flex;
+    max-width: 1000px;
+    margin: 40px auto;
+    gap: 60px;
+}
+
+.product-image img {
+    width: 400px;
+    height: auto;
+    object-fit: cover;
+}
+
+.product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.product-title {
+    font-size: 22px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.brand-name {
+    font-size: 14px;
+    color: #555;
+    margin: 0;
+}
+
+.price {
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.icon-row {
+    display: flex;
+    gap: 20px;
+    /* アイコン間の余白 */
+}
+
+.icon-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+}
+
+.icon {
+    font-size: 24px;
+    line-height: 1;
+}
+
+.count {
+    margin-top: 4px;
+    font-size: 14px;
+    color: #555;
+}
+
+.icon.comment {
+    margin-top: 2px;
+}
+
+
+.like-button {
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #aaa;
+}
+
+.like-button.liked {
+    color: red;
+}
+
+.purchase-button {
+    background-color: #ff5c5c;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.section-title {
+    font-size: 18px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 4px;
+    margin-top: 20px;
+}
+
+.comment {
+    margin-top: 10px;
+}
+.user-info {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+.profile-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: #ccc;
+    display: block;
+}
+
+.comment strong {
+    font-size: 14px;
+}
+
+.comment-body {
+    padding: 10px 10px;
+    border-radius: 4px;
+    font-size: 14px;
+    background-color: #cccccca3;
+}
+
+.form-textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+    margin-top: 5px;
+}
+
+.comment-submit {
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px 16px;
+    background-color: #ff5c5c;
+    color: #fff;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.category-name {
+    display: inline-block;
+    background-color: #ccc;
+    border-radius: 20px;
+    padding: 5px 10px;
+}
+
+/* ヘッダーナビ */
+.header-input {
+    width: 30%;
+}
+
+.keyword-input {
+    padding: 8px 16px;
+    height: 40px;
+    width: 100%;
+    font-size: 18px;
+}
+
+.nav-buttons {
+    width: 25%;
+    padding-left: 30px;
+}
+
+.nav-buttons form {
+    display: inline-block;
+}
+
+.logout__btn button,
+.mypage-link button {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sell-link button {
+    background-color: #fff;
+    color: #000;
+    border: none;
+    padding: 6px 12px;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.sell-link button:hover {
+    background-color: #f2f2f2;
+}

@@ -17,8 +17,9 @@ class CreatePurchasesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
-            $table->string('shipping_address');
-            $table->timestamp('purchased_at');
+            $table->unsignedTinyInteger('payment_method')->comment('1: credit, 2: konbini');
+            $table->string('delivery_postal_code');
+            $table->string('delivery_address');
             $table->timestamps();
             $table->unique('product_id');
         });

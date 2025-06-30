@@ -1,12 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,35 +19,47 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 |
 */
 
+Route::get('/register', [RegisterController::class, 'showRegistrationForm']);
+Route::post('/register', [RegisterController::class, 'register']);
+Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/mypage/profile', [ProfileController::class, 'create']);
+Route::put('/mypage/profile', [ProfileController::class, 'store']);
 
-// --- 公開ルート（未ログインでもOK） --- //
-
-// トップ（全商品一覧）＋マイリスト切替（クエリ判定）
-Route::get('/', [ProductController::class, 'index'])->name('products.index');
-
-// 会員登録 / ログイン（Fortifyでカスタマイズ可）
-Route::get('/register', [RegisteredUserController::class, 'create'])->name('register');
-Route::get('/login', [AuthenticatedSessionController::class, 'create'])->name('login');
+Route::get('/', [ItemController::class, 'index']);
 
 // --- 認証が必要なルート --- //
 Route::middleware('auth')->group(function () {
 
     // 商品詳細
-    Route::get('/item/{item_id}', [ProductController::class, 'show'])->name('products.show');
+    Route::get('/item/{item_id}', [ItemController::class, 'detail']);
+
+    Route::post('/item/{item_id}/like', [ItemController::class, 'toggle']);
+
+    Route::post('/item/{item_id}/review', [ItemController::class, 'review']);
 
     // 商品購入
-    Route::get('/purchase/{item_id}', [PurchaseController::class, 'showPurchaseForm'])->name('purchase.show');
+    Route::get('/purchase/{item_id}', [ItemController::class, 'purchaseForm']);
+    Route::post('/purchase/{item_id}', [ItemController::class, 'buy']);
 
     // 住所変更（購入中）
-    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress'])->name('purchase.address.edit');
+    Route::get('/purchase/address/{item_id}', [ItemController::class, 'editAddress']);
+    Route::put('/purchase/address/{item_id}', [ItemController::class, 'updateAddress']);
 
     // 商品出品
-    Route::get('/sell', [ProductController::class, 'create'])->name('products.create');
-    Route::post('/sell', [ProductController::class, 'store'])->name('products.store');
+    Route::get('/sell', [ItemController::class, 'create']);
+    Route::post('/sell', [ItemController::class, 'store']);
 
     // プロフィール（マイページ）
-    Route::get('/mypage', [ProfileController::class, 'show'])->name('profile.show');
-    Route::get('/mypage/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::post('/mypage/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/mypage', [ProfileController::class, 'show']);
+    Route::get('/mypage/profile/edit', [ProfileController::class, 'edit']);
+    Route::put('/mypage/profile/edit', [ProfileController::class, 'update']);
+
+    Route::post('/logout', function () {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect('/');
+    });
 });
 
