@@ -123,8 +123,10 @@ class ItemController extends Controller
 
         if ($product->likes()->where('user_id', $user->id)->exists()) {
             $product->likes()->where('user_id', $user->id)->delete();
+            $product->decrement('likes_count');
         } else {
             $product->likes()->create(['user_id' => $user->id]);
+            $product->increment('likes_count');
         }
 
         return back();
@@ -164,6 +166,7 @@ class ItemController extends Controller
             'payment_method' => $validated['payment_method'],
             'delivery_postal_code'=> $user->postal_code,
             'delivery_address'=> $user->address,
+            'delivery_building_name'=> $user->building_name,
         ]);
 
 

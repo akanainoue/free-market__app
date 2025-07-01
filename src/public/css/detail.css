@@ -6,7 +6,8 @@
 }
 
 .product-image img {
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     height: auto;
     object-fit: cover;
 }
@@ -46,7 +47,6 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-size: 16px;
 }
 
 .icon {
@@ -198,4 +198,55 @@
 
 .sell-link button:hover {
     background-color: #f2f2f2;
+}
+
+@media screen and (max-width: 768px) {
+    .product-detail-container {
+        flex-direction: column;
+        padding: 0 20px;
+        gap: 30px;
+    }
+
+    .product-image img {
+        margin: 0 auto;
+        max-width: 100%;
+    }
+
+    .purchase-button {
+        width: 100%;
+    }
+}
+
+/* スマホ（~ 600px）対応 */
+@media screen and (max-width: 480px) {
+    .product-title {
+        font-size: 20px;
+    }
+
+    .brand-name,
+    .price {
+        font-size: 16px;
+    }
+
+    .icon {
+        font-size: 20px;
+    }
+
+    .count {
+        font-size: 12px;
+    }
+
+    .comment-body {
+        font-size: 13px;
+        padding: 8px;
+    }
+
+    .form-textarea {
+        font-size: 13px;
+    }
+
+    .comment-submit {
+        font-size: 13px;
+        padding: 8px;
+    }
 }

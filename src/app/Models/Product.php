@@ -54,8 +54,8 @@ class Product extends Model
         return $this->hasOne(Purchase::class);
     }
 
-    public function isSold()
-    {
-        return $this->purchase()->exists();
-    }
+    // public function isSold()
+    // {
+    //     return $this->purchase()->exists();
+    // }
 }

@@ -20,6 +20,7 @@ class CreatePurchasesTable extends Migration
             $table->unsignedTinyInteger('payment_method')->comment('1: credit, 2: konbini');
             $table->string('delivery_postal_code');
             $table->string('delivery_address');
+            $table->string('delivery_building_name')->nullable();
             $table->timestamps();
             $table->unique('product_id');
         });
