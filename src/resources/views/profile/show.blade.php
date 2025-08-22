@@ -31,7 +31,7 @@
 <div class="mypage-container">
     <div class="profile-section">
         <div class="profile-image-wrapper">
-            <img src="{{ asset('storage/profiles/' . $user->profile_image) }}" alt="" class="profile-img">
+            <img src="{{ asset('storage/profile_image/' . $user->profile_image) }}" alt="" class="profile-img">
             <p class="profile-alt-text">プロフィール画像</p>
         </div>
         <h2 class="user-name">{{ $user->name }}</h2>

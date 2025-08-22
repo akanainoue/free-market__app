@@ -1,12 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\VerificationController;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\MailSendController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,18 +23,25 @@ use App\Http\Controllers\Auth\LoginController;
 
 Route::get('/register', [RegisterController::class, 'showRegistrationForm']);
 Route::post('/register', [RegisterController::class, 'register']);
+
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
-Route::get('/mypage/profile', [ProfileController::class, 'create']);
-Route::put('/mypage/profile', [ProfileController::class, 'store']);
+
+Route::get('/email/verify', [VerificationController::class, 'show']);
+Route::get('/email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify');
+Route::post('/email/resend', [VerificationController::class, 'resend'])->name('verification.resend');
 
 Route::get('/', [ItemController::class, 'index']);
+Route::get('/item/{item_id}', [ItemController::class, 'detail']);
+
+
 
 // --- 認証が必要なルート --- //
 Route::middleware('auth')->group(function () {
+    Route::get('/mypage/profile', [ProfileController::class, 'create'])
+        ->middleware('verified');
 
-    // 商品詳細
-    Route::get('/item/{item_id}', [ItemController::class, 'detail']);
+    Route::put('/mypage/profile', [ProfileController::class, 'store']);
 
     Route::post('/item/{item_id}/like', [ItemController::class, 'toggle']);
 
@@ -41,6 +50,11 @@ Route::middleware('auth')->group(function () {
     // 商品購入
     Route::get('/purchase/{item_id}', [ItemController::class, 'purchaseForm']);
     Route::post('/purchase/{item_id}', [ItemController::class, 'buy']);
+    // Checkout成功/キャンセル（ビューは作らず /mypage に戻す）
+    Route::get('/purchase/success/{item_id}', [ItemController::class, 'checkoutSuccess'])
+    ->name('purchase.success');
+    Route::get('/purchase/cancel/{item_id}', [ItemController::class, 'checkoutCancel'])
+    ->name('purchase.cancel');
 
     // 住所変更（購入中）
     Route::get('/purchase/address/{item_id}', [ItemController::class, 'editAddress']);

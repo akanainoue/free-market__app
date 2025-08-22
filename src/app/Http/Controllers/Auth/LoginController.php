@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth; //ここから下追記
 use Illuminate\Validation\ValidationException;
 use App\Http\Requests\LoginRequest;
@@ -21,7 +21,7 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
-            return redirect()->intended('/'); // ← 好きな遷移先に
+            return redirect('/'); // ← 好きな遷移先に
         }
 
         throw ValidationException::withMessages([

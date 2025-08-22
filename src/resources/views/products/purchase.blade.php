@@ -42,7 +42,7 @@
                 <select name="payment_method" onchange="this.form.submit()" required>
                     <option value="">選択してください</option>
                     <option value="1" {{ request('payment_method') == '1' ? 'selected' : '' }}>カード支払い</option>
-                    <option value="2"{{ request('payment_method') == '2' ? 'selected' : '' }}>コンビニ支払い</option>
+                    <option value="2" {{ request('payment_method') == '2' ? 'selected' : '' }}>コンビニ支払い</option>
                 </select>
             </form>
         </div>
@@ -51,11 +51,11 @@
             {{ $message }}
             @enderror
         </p>
-        
+
         <div class="address-section">
             <div class="section-header">
                 <h3>配送先</h3>
-                <a href="/purchase/address/{$product->id}">変更する</a>
+                <a href="/purchase/address/{{$product->id}}">変更する</a>
             </div>
             <div class="address">
                 <p>〒 {{ $user->postal_code }}</p>
@@ -88,7 +88,6 @@
                 </td>
             </tr>
         </table>
-        
 
         <form method="POST" action="/purchase/{{ $product->id }}">
             @csrf

@@ -30,7 +30,7 @@
 @section('content')
 <div class="tab-menu">
     <a href="/" class="{{ !$isMylist ? 'active' : '' }}">おすすめ</a>
-    <a href="/?page=mylist" class="{{ $isMylist ? 'active' : '' }}">マイリスト</a>
+    <a href="/?tab=mylist" class="{{ $isMylist ? 'active' : '' }}">マイリスト</a>
 </div>
 <div class="item-list">
     @foreach($items as $item)
