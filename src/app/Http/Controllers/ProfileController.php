@@ -60,25 +60,10 @@ class ProfileController extends Controller
                       ->where('sender_id', '!=', $user->id);
                 }])
                 ->get();
-            // $transactions = $user->transactions()
-            //     ->where('status', 'ongoing')
-            //     ->with('product')
-            //     ->withCount(['messages as unread_count' => function ($q) use ($user) {
-            //         $q->where('is_read', false)->where('sender_id', '!=', $user->id);
-            //     }])
-            //     ->get();    
+   
         } else {
             $products = $user->products()->latest('created_at')->get();
         }
-
-        // 取引中の商品
-        // $transactions = auth()->user()->transactions()
-        //     ->where('status', 'ongoing')
-        //     ->with('product')
-        //     ->withCount(['messages as unread_count' => function ($q) {
-        //         $q->where('is_read', false)->where('sender_id', '!=', auth()->id());
-        //     }])
-        //     ->get();
 
         return view('profile.show', compact('user', 'products', 'purchases', 'page', 'transactions'));
     }

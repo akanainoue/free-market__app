@@ -22,10 +22,7 @@ class TransactionMessageController extends Controller
             abort(403);
         }
 
-         // メッセージと画像が両方空ならエラー
-        // if (empty($request->message) && !$request->hasFile('image')) {
-        //     return back()->withErrors(['message' => 'メッセージまたは画像を入力してください']);
-        // }
+
 
         // 画像の保存処理
         $imagePath = null;

@@ -96,43 +96,6 @@
 </div>
 
 {{-- ⭐ 評価モーダル --}}
-<!-- <dialog id="rateModal" class="rate-modal">
-    <form method="POST" action="{{ route('transaction.rate', $transaction->id) }}">
-        @csrf
-        <h3>ユーザーを評価する</h3>
-        <label>評価（1〜5）</label>
-        <select name="score">
-            @for ($i = 5; $i >= 1; $i--)
-                <option value="{{ $i }}">{{ $i }} ★</option>
-            @endfor
-        </select>
-        <textarea name="comment" placeholder="コメント（任意）"></textarea>
-        <div class="modal-actions">
-            <button type="submit" class="modal-submit">評価を送信</button>
-            <button type="button" onclick="closeModal()" class="modal-cancel">キャンセル</button>
-        </div>
-    </form>
-</dialog> -->
-
-<!-- <dialog id="rateModal" class="rate-modal">
-    <form method="POST" action="{{ route('transaction.rate', $transaction->id) }}" class="rate-form">
-        @csrf
-        <h3 class="rate-title">取引が完了しました。</h3>
-        <p class="rate-subtitle">今回の取引相手はどうでしたか？</p>
-
-        <div class="star-rating">
-            @for ($i = 1; $i <= 5; $i++)
-                <input type="radio" name="score" id="star{{ $i }}" value="{{ $i }}" {{ $i === 3 ? 'checked' : '' }}>
-                <label for="star{{ $i }}">★</label>
-            @endfor
-        </div>
-
-        <div class="modal-actions">
-            <button type="submit" class="submit-button">送信する</button>
-        </div>
-    </form>
-</dialog> -->
-
 <dialog id="rateModal" class="rate-modal">
     <form method="POST" action="{{ route('transaction.rate', $transaction->id) }}">
         @csrf

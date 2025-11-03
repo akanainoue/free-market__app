@@ -176,46 +176,7 @@
     cursor: pointer;
 }
 
-/* .message-wrapper {
-    display: flex;
-    flex-direction: column;
-    margin-bottom: 20px;
-    max-width: 70%;
-}
 
-.message-wrapper.self {
-    align-self: flex-end;
-    text-align: center;
-}
-
-.message-wrapper.other {
-    align-self: flex-start;
-}
-
-.avatar {
-    width: 30px;
-    height: 30px;
-    background-color: #bbb;
-    border-radius: 50%;
-    margin-bottom: 5px;
-}
-
-.username {
-    font-size: 12px;
-    color: #333;
-    margin-bottom: 5px;
-}
-
-.message-box {
-    background-color: #eee;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #ccc;
-}
-
-.message-wrapper.self .message-box {
-    background-color: #cce5ff;
-} */
 
 .chat-image {
     max-width: 200px;
@@ -224,11 +185,6 @@
     margin-bottom: 5px;
 }
 
-/* .meta {
-    font-size: 10px;
-    color: #666;
-    margin-top: 5px;
-} */
 
 .chat-form {
     display: flex;
@@ -359,26 +315,28 @@
     font-size: 1.1rem;
     cursor: pointer;
 }
-/* 📱 レスポンシブ */
-@media (max-width: 768px) {
+
+@media screen and (max-width: 768px) {
     .chat-container {
         flex-direction: column;
+        height: auto;
     }
 
     .sidebar {
         width: 100%;
-        display: flex;
-        overflow-x: auto;
-    }
-
-    .sidebar-item {
-        flex: 1;
-        text-align: center;
-        margin-right: 5px;
+        padding: 10px;
+        order: 2;
     }
 
     .chat-main {
         width: 100%;
+        order: 1;
+    }
+
+    .chat-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
     }
 
     .product-info {
@@ -386,98 +344,72 @@
         align-items: flex-start;
     }
 
-    .chat-form {
-        flex-direction: column;
+    .product-image {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
     }
 
-    /* 変更 */
+    .product-img {
+        width: 100%;
+        height: auto;
+    }
 
-        .chat-form {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px;
-            border-top: 1px solid #ccc;
-            background: #fff;
-        }
-    
-        .chat-form input[type="text"] {
-            flex: 1;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-        }
-    
-        .chat-form input[type="file"] {
-            display: none;
-        }
-    
-        .image-label {
-            padding: 8px 12px;
-            border: 1px solid #ccc;
-            background-color: #fff;
-            border-radius: 6px;
-            font-size: 12px;
-            cursor: pointer;
-            color: red;
-        }
-    
-        .send-button {
-            width: 40px;
-            height: 40px;
-            border: none;
-            cursor: pointer;
-        }
-    
-        /* メッセージ表示エリア */
-        .message-wrapper {
-            display: flex;
-            margin: 10px;
-            align-items: flex-start;
-            gap: 8px;
-            max-width: 70%;
-        }
-    
-        .message-wrapper.self {
-            margin-left: auto;
-            flex-direction: row-reverse;
-        }
-    
-        .message-box {
-            background-color: #e0e0e0;
-            padding: 8px 12px;
-            border-radius: 8px;
-            position: relative;
-        }
-    
-        .message-wrapper.self .message-box {
-            background-color: #cce5ff;
-        }
-    
-        .avatar {
-            width: 40px;
-            height: 40px;
-            background: #ccc;
-            border-radius: 50%;
-        }
-    
-        .username {
-            font-size: 12px;
-            color: #333;
-            margin-top: 4px;
-        }
-    
-        .meta {
-            font-size: 10px;
-            color: #666;
-            text-align: right;
-            margin-top: 4px;
-        }
+    .product-details .product-name {
+        font-size: 20px;
+    }
 
-        .profile-img {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
+    .message-wrapper {
+        max-width: 100%;
+    }
+
+    .message-box {
+        max-width: 100%;
+    }
+
+    .chat-form {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .chat-form input[type="text"] {
+        width: 100%;
+    }
+
+    .chat-form input[type="file"] {
+        width: 100%;
+    }
+
+    .image-label {
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    .send-button img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .rate-modal {
+        width: 90%;
+    }
+
+    .sidebar-item {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .message-user-info .username {
+        font-size: 14px;
+    }
+
+    .meta {
+        flex-wrap: wrap;
+        justify-content: flex-end;
+    }
+
+    .meta a,
+    .meta button {
+        font-size: 12px;
+    }
 }
