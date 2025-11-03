@@ -19,10 +19,8 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-
             // ログイン状態を長期間保持（Remember Me）するためのトークン を保存するカラム
             $table->rememberToken();
-            
             $table->timestamps();
             $table->string('profile_image')->nullable();
             $table->string('postal_code')->nullable();

@@ -30,3 +30,4 @@ class VerificationController extends Controller
         return back()->with('message', '確認メールを再送信しました。');
     }
 }
+

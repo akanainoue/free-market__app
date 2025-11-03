@@ -91,12 +91,11 @@ class ItemController extends Controller
         $validated = $request->validated(); // バリデーション済のデータ取得
 
         if ($request->hasFile('image')) {
-            $path = $request->file('image')->store('public/items');
+            $path = $request->file('image')->store('items', 'public');
             $validated['image'] = basename($path);
         }
 
         $validated['user_id'] = auth()->id();
-
         $product = Product::create($validated);
 
         if ($request->filled('category_id')) {
@@ -108,7 +107,7 @@ class ItemController extends Controller
 
     public function detail($item_id)
     {
-        $product = Product::with(['categories', 'condition', 'reviews', 'likes'])->withCount(['likes', 'reviews'])->findOrFail($item_id);
+        $product = Product::with(['categories', 'condition', 'reviews', 'likes', 'transaction'])->withCount(['likes', 'reviews'])->findOrFail($item_id);
         return view('products.detail', compact('product'));
     }
 
@@ -268,3 +267,5 @@ class ItemController extends Controller
         return redirect('/purchase/' . $item_id)->with('message', '住所を更新しました');
     }
 }
+
+

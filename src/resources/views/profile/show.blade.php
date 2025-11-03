@@ -41,6 +41,12 @@
     <div class="tab-menu">
         <a href="/mypage?page=sell" class="{{ $page === 'sell' ? 'active' : '' }}">出品した商品</a>
         <a href="/mypage?page=buy" class="{{ $page === 'buy' ? 'active' : '' }}">購入した商品</a>
+        <a href="/mypage?page=transaction" class="{{ $page === 'transaction' ? 'active' : '' }}">
+            取引中の商品 
+            @if(isset($transactions) && $transactions->sum('unread_count') > 0)
+                <span style="color: red;">{{ $transactions->sum('unread_count') }}</span>
+            @endif
+        </a>
     </div>
 
     <div class="product-list">
@@ -58,7 +64,20 @@
                     <p>{{ $purchase->product->name }}</p>
                 </div>
             @endforeach
+        @elseif($page === 'transaction')
+            @foreach($transactions as $transaction)
+                <a href="{{ route('transaction.chat', $transaction->id) }}" class="product-card" style="position: relative;">
+                    @if($transaction->unread_count > 0)
+                        <div style="position:absolute; top:5px; left:5px; background:red; color:white; border-radius:50%; width:20px; height:20px; text-align:center; line-height:20px; font-size:12px;">
+                            {{ $transaction->unread_count }}
+                        </div>
+                    @endif
+                    <img src="{{ asset('storage/items/' . $transaction->product->image) }}" alt="商品画像">
+                    <p>{{ $transaction->product->name }}</p>
+                </a>
+            @endforeach
         @endif
     </div>
 </div>
 @endsection
+

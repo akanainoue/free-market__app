@@ -1,0 +1,483 @@
+/* レイアウト */
+.chat-container {
+    display: flex;
+    height: 100vh;
+    font-family: sans-serif;
+}
+
+.sidebar {
+    width: 20%;
+    background-color: #666;
+    color: white;
+    padding: 20px;
+}
+
+.sidebar-item {
+    display: block;
+    background-color: white;
+    color: black;
+    padding: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    border-radius: 4px;
+}
+
+.chat-main {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    border-bottom: 1px solid #ccc;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rate-button {
+    background-color: #ff4b6e;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.product-info {
+    display: flex;
+    border-bottom: 1px solid #ccc;
+    padding: 20px;
+    align-items: center;
+}
+
+.product-image {
+    width: 180px;
+    height: 180px;
+    background-color: #ccc;
+    margin-right: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-img {
+    max-width: 180px;
+    max-height: 180px;
+    object-fit: cover;
+}
+
+.product-details .product-name {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.product-price {
+    font-size: 18px;
+    color: #555;
+}
+
+.message-list {
+    flex-grow: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.message-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+    max-width: 70%;
+}
+
+.message-wrapper.self {
+    margin-left: auto;
+    align-items: flex-end;
+}
+
+.message-user-info {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.message-user-info.left {
+    flex-direction: row;
+}
+
+.message-user-info.right {
+    flex-direction: row-reverse;
+}
+
+.message-user-info .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 8px;
+}
+
+.message-user-info .username {
+    font-weight: bold;
+}
+
+.message-box {
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    padding: 10px 14px;
+    word-break: break-word;
+    position: relative;
+    max-width: 75%;
+}
+
+.message-wrapper.self .message-box {
+    background-color: #f3f3f3;
+    text-align: right;
+}
+
+.message-box p {
+    margin: 0;
+}
+
+.meta {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+
+
+.meta a {
+    margin-right: 10px;
+    color: #555;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.meta button {
+    background: none;
+    border: none;
+    padding: 0;
+    color: #555;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.send-button img {
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+}
+
+/* .message-wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    max-width: 70%;
+}
+
+.message-wrapper.self {
+    align-self: flex-end;
+    text-align: center;
+}
+
+.message-wrapper.other {
+    align-self: flex-start;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    background-color: #bbb;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+
+.username {
+    font-size: 12px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.message-box {
+    background-color: #eee;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.message-wrapper.self .message-box {
+    background-color: #cce5ff;
+} */
+
+.chat-image {
+    max-width: 200px;
+    height: auto;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* .meta {
+    font-size: 10px;
+    color: #666;
+    margin-top: 5px;
+} */
+
+.chat-form {
+    display: flex;
+    position: relative;
+    align-items: center;
+    padding: 15px;
+    border-top: 1px solid #ccc;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top: 2px;
+    /* メッセージ欄の上に表示 */
+    left: 15px;
+}
+
+.chat-form input[type="text"] {
+    flex: 2;
+    padding: 10px;
+    border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+.chat-form input[type="file"] {
+    flex: 1;
+}
+
+.image-label {
+    display: inline-block;
+    padding: 8px 16px;
+    margin-right: 10px;
+    border: 2px solid #ff4d4d;
+    color: #ff4d4d;
+    font-weight: bold;
+    background-color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.image-label:hover {
+    background-color: #ff4d4d;
+    color: white;
+}
+
+
+
+/* ⭐ モーダル */
+.star-rating {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    font-size: 40px;
+    direction: rtl;
+    /* ← 重要: ラベルの順序を逆転 */
+}
+
+.star-rating input[type="radio"] {
+    display: none;
+}
+
+.star-rating label {
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+/* ホバーや選択時のゴールド表示 */
+.star-rating input[type="radio"]:checked~label,
+.star-rating label:hover,
+.star-rating label:hover~label {
+    color: gold;
+}
+
+/* 初期値で左から3つの星をゴールドにする */
+.star-rating input#star3:checked~label,
+.star-rating input#star2:checked~label,
+.star-rating input#star1:checked~label {
+    color: gold;
+}
+
+
+
+.rate-modal {
+    padding: 2rem;
+    border: 2px solid #333;
+    border-radius: 1rem;
+    background: #fffdeb;
+    font-family: 'Helvetica', sans-serif;
+    width: 100%;
+    max-width: 500px;
+}
+
+.modal-header h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.divider {
+    border: none;
+    border-top: 1px solid #aaa;
+    margin: 1rem 0;
+}
+
+.rating-label {
+    font-size: 1rem;
+    color: #888;
+    margin-bottom: 1rem;
+}
+
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+}
+
+.submit-btn {
+    background: #ff9f9f;
+    border: none;
+    padding: 0.7rem 1.5rem;
+    border-radius: 0.8rem;
+    color: white;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+/* 📱 レスポンシブ */
+@media (max-width: 768px) {
+    .chat-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        display: flex;
+        overflow-x: auto;
+    }
+
+    .sidebar-item {
+        flex: 1;
+        text-align: center;
+        margin-right: 5px;
+    }
+
+    .chat-main {
+        width: 100%;
+    }
+
+    .product-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .chat-form {
+        flex-direction: column;
+    }
+
+    /* 変更 */
+
+        .chat-form {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px;
+            border-top: 1px solid #ccc;
+            background: #fff;
+        }
+    
+        .chat-form input[type="text"] {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+        }
+    
+        .chat-form input[type="file"] {
+            display: none;
+        }
+    
+        .image-label {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            background-color: #fff;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            color: red;
+        }
+    
+        .send-button {
+            width: 40px;
+            height: 40px;
+            border: none;
+            cursor: pointer;
+        }
+    
+        /* メッセージ表示エリア */
+        .message-wrapper {
+            display: flex;
+            margin: 10px;
+            align-items: flex-start;
+            gap: 8px;
+            max-width: 70%;
+        }
+    
+        .message-wrapper.self {
+            margin-left: auto;
+            flex-direction: row-reverse;
+        }
+    
+        .message-box {
+            background-color: #e0e0e0;
+            padding: 8px 12px;
+            border-radius: 8px;
+            position: relative;
+        }
+    
+        .message-wrapper.self .message-box {
+            background-color: #cce5ff;
+        }
+    
+        .avatar {
+            width: 40px;
+            height: 40px;
+            background: #ccc;
+            border-radius: 50%;
+        }
+    
+        .username {
+            font-size: 12px;
+            color: #333;
+            margin-top: 4px;
+        }
+    
+        .meta {
+            font-size: 10px;
+            color: #666;
+            text-align: right;
+            margin-top: 4px;
+        }
+
+        .profile-img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+}

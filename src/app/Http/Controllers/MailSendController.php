@@ -1,19 +1,20 @@
-<!-- <?php
+<?php
 
-namespace App\Http\Controllers;
+// namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use Mail;
+// use Illuminate\Http\Request;
+// use Mail;
 
-class MailSendController extends Controller
-{
-    public function index(){
+// class MailSendController extends Controller
+// {
+//     public function index(){
 
-        $data = [];
+//         $data = [];
 
-        Mail::send('auth.verify', $data, function($message){
-            $message->to('abc987@example.com', 'Test')
-                    ->subject('This is a test mail');
-        });
-    }
-} -->
+//         Mail::send('auth.verify', $data, function($message){
+//             $message->to('abc987@example.com', 'Test')
+//                     ->subject('This is a test mail');
+//         });
+//     }
+// }
+

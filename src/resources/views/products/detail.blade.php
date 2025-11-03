@@ -54,8 +54,12 @@
             </div>
         </div>
 
-        <a href="/purchase/{{ $product->id }}" class="purchase-button">購入手続きへ</a>
-
+        @if ($product->transaction && $product->transaction->status === 'completed')
+            <a href="{{ route('purchase.form', ['item_id' => $product->id]) }}" class="purchase-button">購入手続きへ</a>
+        @else
+            <a href="{{ route('transaction.enter', ['product' => $product->id]) }}" class="purchase-button">購入手続きへ</a>
+        @endif
+        
         <h3 class="section-title">商品説明</h3>
         <p>{!! nl2br(e($product->description)) !!}</p>
 
@@ -88,3 +92,4 @@
     </div>
 </div>
 @endsection
+

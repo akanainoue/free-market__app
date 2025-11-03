@@ -12,11 +12,6 @@ class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array<int, string>
-     */
     protected $fillable = [
         'name',
         'email',
@@ -27,21 +22,11 @@ class User extends Authenticatable implements MustVerifyEmail
         'profile_image',
     ];
 
-    /**
-     * The attributes that should be hidden for serialization.
-     *
-     * @var array<int, string>
-     */
     protected $hidden = [
         'password',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast.
-     *
-     * @var array<string, string>
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
@@ -83,5 +68,15 @@ class User extends Authenticatable implements MustVerifyEmail
             'id',  //Userの
             'product_id'  //Purchaseの
         );
+    }
+
+    public function buyerTransactions()
+    {
+        return $this->hasMany(Transaction::class, 'buyer_id');
+    }
+    
+    public function sellerTransactions()
+    {
+        return $this->hasManyThrough(Transaction::class, Product::class, 'user_id', 'product_id');
     }
 }

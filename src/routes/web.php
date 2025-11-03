@@ -10,6 +10,10 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\MailSendController;
 
+use App\Http\Controllers\TransactionController;
+use App\Http\Controllers\TransactionMessageController;
+use App\Http\Controllers\RatingController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -48,13 +52,24 @@ Route::middleware('auth')->group(function () {
     Route::post('/item/{item_id}/review', [ItemController::class, 'review']);
 
     // 商品購入
-    Route::get('/purchase/{item_id}', [ItemController::class, 'purchaseForm']);
+    Route::get('/purchase/{item_id}', [ItemController::class, 'purchaseForm'])->name('purchase.form');
     Route::post('/purchase/{item_id}', [ItemController::class, 'buy']);
     // Checkout成功/キャンセル（ビューは作らず /mypage に戻す）
     Route::get('/purchase/success/{item_id}', [ItemController::class, 'checkoutSuccess'])
     ->name('purchase.success');
     Route::get('/purchase/cancel/{item_id}', [ItemController::class, 'checkoutCancel'])
     ->name('purchase.cancel');
+
+    // 商品詳細 → チャット画面に遷移（取引作成 or 既存取得）
+    Route::get('/transaction/{product}', [TransactionController::class, 'enter'])->name('transaction.enter');
+    // チャット画面表示
+    Route::get('/transaction/chat/{transaction}', [TransactionController::class, 'chat'])->name('transaction.chat');
+    // メッセージ送信
+    Route::post('/transaction/chat/{transaction}/message', [TransactionMessageController::class, 'store'])->name('transaction.message.store');
+    // メッセージ削除
+    Route::delete('/transaction/chat/message/{message}', [TransactionMessageController::class, 'destroy'])->name('transaction.message.delete');
+    // 取引完了（評価入力）
+    Route::post('/transaction/{transaction}/rate', [RatingController::class, 'store'])->name('transaction.rate');
 
     // 住所変更（購入中）
     Route::get('/purchase/address/{item_id}', [ItemController::class, 'editAddress']);
@@ -76,4 +91,5 @@ Route::middleware('auth')->group(function () {
         return redirect('/');
     });
 });
+
 

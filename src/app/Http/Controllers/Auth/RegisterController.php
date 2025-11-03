@@ -33,3 +33,5 @@ class RegisterController extends Controller
         return redirect('/email/verify');
     }
 }
+
+

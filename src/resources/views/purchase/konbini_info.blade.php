@@ -16,3 +16,4 @@
         <a href="/mypage" class="btn btn-primary">マイページへ</a>
     </div>
 @endsection
+
