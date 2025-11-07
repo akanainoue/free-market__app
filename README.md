@@ -54,10 +54,18 @@
 8. シンボリックリンク作成
     php artisan storage:link
 
+9. 権限付与（コンテナ内）
+    chmod -R 777 storage bootstrap/cache
+
+10. 所有者をWebサーバーに変更（コンテナ内）
+    chown -R www-data:www-data storage bootstrap/cache
+
+
+
 <!-- 9. npm install && npm run dev
    chmod -R 777 storage bootstrap/cache
    chown -R www-data:www-data storage bootstrap/cache -->
-10. http://localhost/register から会員登録
+11. http://localhost/register から会員登録
     
 ### 新機能
  <!-- チャット機能（リアルタイム対応） -->
