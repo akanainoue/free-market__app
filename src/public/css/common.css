@@ -1,4 +1,4 @@
-.header{
+.header {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -8,6 +8,6 @@
     padding: 10px 16px;
 }
 
-main{
+main {
     margin: 0 auto;
 }

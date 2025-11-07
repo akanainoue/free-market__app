@@ -34,3 +34,4 @@ class CreateTransactionsTable extends Migration
         Schema::dropIfExists('transactions');
     }
 }
+

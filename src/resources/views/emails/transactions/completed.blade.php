@@ -22,3 +22,4 @@
 ありがとうございます！  
 COACHTECHフリマ運営チーム
 @endcomponent
+

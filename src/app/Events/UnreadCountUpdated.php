@@ -45,3 +45,4 @@ class UnreadCountUpdated implements ShouldBroadcast
         ];
     }
 }
+

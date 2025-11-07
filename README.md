@@ -30,14 +30,14 @@
     STRIPE_KEY=your_stripe_key
     STRIPE_SECRET=your_stripe_secret
 
-    BROADCAST_DRIVER=pusher
+    <!-- BROADCAST_DRIVER=pusher -->
 
     FILESYSTEM_DRIVER=public
 
-    PUSHER_APP_ID=your_app_id
+    <!-- PUSHER_APP_ID=your_app_id
     PUSHER_APP_KEY=your_app_key
     PUSHER_APP_SECRET=your_app_secret
-    PUSHER_APP_CLUSTER=ap3
+    PUSHER_APP_CLUSTER=ap3 -->
 
 5. アプリケーションキーの作成
     php artisan key:generate
@@ -54,23 +54,25 @@
 8. シンボリックリンク作成
     php artisan storage:link
 
-9. npm install && npm run dev
+<!-- 9. npm install && npm run dev
    chmod -R 777 storage bootstrap/cache
-   chown -R www-data:www-data storage bootstrap/cache
+   chown -R www-data:www-data storage bootstrap/cache -->
 10. http://localhost/register から会員登録
     
-### 新機能とセットアップ
- チャット機能（リアルタイム対応）
+### 新機能
+ <!-- チャット機能（リアルタイム対応） -->
++ チャット機能（非リアルタイム：リロードで反映）
+
 ### 使用技術
 + PHP8.3.0
 + Laravel8.83.27
 + MySQL8.0.26
 + Stripe を使って決済処理を実装
 + Laravel のメール通知（ユーザー認証・通知）に MailHog を使用
-## チャット機能（リアルタイム対応）　
+<!-- ## チャット機能（リアルタイム対応）　
 + Laravel Echo
 + Pusher（BROADCAST_DRIVER）
-+ JavaScript + WebSocket
++ JavaScript + WebSocket -->
 
 ## ER図
 ![alt text](image-2.png)
@@ -79,6 +81,8 @@
 + 開発環境：http://localhost/
 + phpMyAdmin:：http://localhost:8080/
 + Mailhog: http://localhost:8025
+
+
 
 
 

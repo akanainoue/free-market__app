@@ -42,7 +42,7 @@ class TransactionMessageController extends Controller
         ]);
 
 
-        broadcast(new NewChatMessage($message))->toOthers(); // ←これがリアルタイム通信
+        // broadcast(new NewChatMessage($message))->toOthers(); // ←これがリアルタイム通信
 
         // 受信者のIDを判定
         $receiverId = Auth::id() === $transaction->buyer_id
@@ -56,7 +56,7 @@ class TransactionMessageController extends Controller
             ->count();
         
         // 未読数更新イベントを発火（リアルタイム通知）
-        event(new UnreadCountUpdated($receiverId, $newUnreadCount));
+        // event(new UnreadCountUpdated($receiverId, $newUnreadCount));
 
         return redirect()->route('transaction.chat', $transaction);
     }

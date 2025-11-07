@@ -7,16 +7,19 @@ svg.w-5.h-5 {
 .header-input {
     width: 30%;
 }
+
 .keyword-input {
     padding: 8px 16px;
     height: 40px;
     width: 100%;
     font-size: 18px;
 }
+
 .nav-buttons {
     width: 25%;
     padding-left: 30px;
 }
+
 .nav-buttons form {
     display: inline-block;
 }
@@ -53,10 +56,11 @@ svg.w-5.h-5 {
 .tab-menu>a {
     text-decoration: none;
     display: inline-block;
-    margin-left:50px ;
+    margin-left: 50px;
     font-size: 20px;
     color: #000;
 }
+
 .item-list {
     margin: 40px;
     display: grid;
@@ -66,7 +70,7 @@ svg.w-5.h-5 {
 }
 
 .item {
-    margin:0px;
+    margin: 0px;
 }
 
 .item-image {
@@ -90,7 +94,7 @@ svg.w-5.h-5 {
 }
 
 .pagination {
-    margin:30px auto;
+    margin: 30px auto;
     text-align: center;
 }
 

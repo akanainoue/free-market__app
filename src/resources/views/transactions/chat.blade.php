@@ -158,34 +158,34 @@ document.addEventListener('DOMContentLoaded', function () {
 </script>
 
 <script>
-    const transactionId = "{{ $transaction->id }}";
+    // const transactionId = "{{ $transaction->id }}";
 
-    window.Echo.private(`chat.${transactionId}`)
-        .listen('NewChatMessage', (e) => {
-            const container = document.querySelector('.message-container');
-            const div = document.createElement('div');
-            div.className = 'p-2 border rounded bg-gray-100';
+    // window.Echo.private(`chat.${transactionId}`)
+    //     .listen('NewChatMessage', (e) => {
+    //         const container = document.querySelector('.message-container');
+    //         const div = document.createElement('div');
+    //         div.className = 'p-2 border rounded bg-gray-100';
             
-            //XSS対策
-            const name = document.createElement('p');
-            name.textContent = `${e.sender_name}: ${e.message}`;
-            const time = document.createElement('span');
-            time.textContent = e.created_at;
-            time.className = 'text-xs text-gray-500';
+    //         //XSS対策
+    //         const name = document.createElement('p');
+    //         name.textContent = `${e.sender_name}: ${e.message}`;
+    //         const time = document.createElement('span');
+    //         time.textContent = e.created_at;
+    //         time.className = 'text-xs text-gray-500';
 
-            div.appendChild(name);
+    //         div.appendChild(name);
 
-            // 👇 ここが画像表示処理の追加部分
-            if (e.image_path) {
-                const img = document.createElement('img');
-                img.src = `/storage/chat_images/${e.image_path}`;
-                img.className = 'chat-image';
-                div.appendChild(img);
-            }
+    //         // 👇 ここが画像表示処理の追加部分
+    //         if (e.image_path) {
+    //             const img = document.createElement('img');
+    //             img.src = `/storage/chat_images/${e.image_path}`;
+    //             img.className = 'chat-image';
+    //             div.appendChild(img);
+    //         }
 
-            div.appendChild(time);
-            container.appendChild(div);
-        });
+    //         div.appendChild(time);
+    //         container.appendChild(div);
+    //     });
 </script>
 @endsection
 
