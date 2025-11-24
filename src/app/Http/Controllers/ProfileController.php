@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth; //ここから下追記
 use App\Http\Requests\ProfileRequest;
 use App\Models\User;
 use App\Models\Transaction;
-
+use App\Models\Rating;
 
 
 class ProfileController extends Controller
@@ -42,7 +42,10 @@ class ProfileController extends Controller
         $products = collect();
         $purchases = collect();
         $transactions = collect();
-
+        // このユーザーが受けた評価の平均（四捨五入）
+        $averageRating = Rating::where('ratee_id', $user->id)->avg('score');
+        $roundedRating = $averageRating ? round($averageRating) : null;
+        
         if ($page === 'buy') {
             $purchases = $user->purchases()->with('product')->latest('created_at')->get();
             $products = collect(); // 空コレクションで安全に
@@ -59,13 +62,19 @@ class ProfileController extends Controller
                     $q->where('is_read', false)
                       ->where('sender_id', '!=', $user->id);
                 }])
-                ->get();
-   
+                ->with(['messages' => function ($q) {
+                    $q->latest()->limit(1); // 最新メッセージのみ取得（orderBy用）
+                }])
+                ->get()
+                ->sortByDesc(function ($transaction) {
+                    return optional($transaction->messages->first())->created_at;
+                })
+                ->values(); // インデックスを振り直す
         } else {
             $products = $user->products()->latest('created_at')->get();
         }
 
-        return view('profile.show', compact('user', 'products', 'purchases', 'page', 'transactions'));
+        return view('profile.show', compact('user', 'products', 'purchases', 'page', 'transactions', 'roundedRating'));
     }
 
     public function edit()

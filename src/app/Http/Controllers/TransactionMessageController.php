@@ -61,6 +61,32 @@ class TransactionMessageController extends Controller
         return redirect()->route('transaction.chat', $transaction);
     }
 
+    //編集
+    public function edit(TransactionMessage $message)
+    {
+        $this->authorize('update', $message); // ポリシーで本人のみ許可
+
+        // 編集モード用セッション
+        session()->flash('edit_message_id', $message->id);
+
+        return view('transactions.edit', compact('message'));
+    }
+
+    public function update(Request $request, TransactionMessage $message)
+    {
+        $this->authorize('update', $message); // 本人のみ許可
+
+        $request->validate([
+            'message' => 'required|string|max:1000',
+        ]);
+
+        $message->update([
+            'message' => $request->message,
+        ]);
+
+        return redirect()->route('transaction.chat', $message->transaction_id)->with('success', 'メッセージを更新しました');
+    }
+
     // 削除
     public function destroy(TransactionMessage $message)
     {
@@ -72,4 +98,6 @@ class TransactionMessageController extends Controller
 
         return back()->with('status', 'メッセージを削除しました');
     }
+
+    
 }

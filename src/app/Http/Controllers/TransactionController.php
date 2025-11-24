@@ -31,6 +31,13 @@ class TransactionController extends Controller
             403
         );
 
+         // ✅ ここで「自分以外」が送信した未読メッセージを既読にする
+        $transaction->messages()
+            ->where('sender_id', '!=', Auth::id())
+            ->where('is_read', false)
+            ->update(['is_read' => true]);
+
+
         $messages = $transaction->messages()->with('sender')->orderBy('created_at')->get();
 
         // 相手ユーザー

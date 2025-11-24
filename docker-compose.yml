@@ -51,6 +51,7 @@ services:
         # container_name: mailhog
         ports:
             - "8025:8025"
+            - "1025:1025"  # ← これを追加！
         environment:
             MH_STORAGE: maildir
             MH_MAILDIR_PATH: /tmp

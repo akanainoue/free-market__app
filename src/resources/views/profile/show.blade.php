@@ -34,8 +34,23 @@
             <img src="{{ asset('storage/profile_image/' . $user->profile_image) }}" alt="" class="profile-img">
             <p class="profile-alt-text">プロフィール画像</p>
         </div>
-        <h2 class="user-name">{{ $user->name }}</h2>
-        <a href="/mypage/profile/edit" class="edit-profile-button">プロフィールを編集</a>
+        <div class="profile-info-wrapper">
+            <div class="user-name">
+            <div class="name">{{ $user->name }}</div>
+            @if (!is_null($roundedRating))
+                <div class="user-rating">
+                    @for ($i = 1; $i <= 5; $i++)
+                        @if ($i <= $roundedRating)
+                            <span class="star filled">★</span>
+                        @else
+                            <span class="star">☆</span>
+                        @endif
+                    @endfor
+                </div>
+            @endif
+            </div>
+            <a href="/mypage/profile/edit" class="edit-profile-button">プロフィールを編集</a>
+        </div>
     </div>
 
     <div class="tab-menu">

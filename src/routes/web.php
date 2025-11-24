@@ -66,8 +66,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/transaction/chat/{transaction}', [TransactionController::class, 'chat'])->name('transaction.chat');
     // メッセージ送信
     Route::post('/transaction/chat/{transaction}/message', [TransactionMessageController::class, 'store'])->name('transaction.message.store');
+    //メッセージ編集
+    Route::get('/transaction/{message}/edit', [TransactionMessageController::class, 'edit'])->name('transaction.message.edit');
+    Route::put('/transaction/{message}', [TransactionMessageController::class, 'update'])->name('transaction.message.update');
     // メッセージ削除
-    Route::delete('/transaction/chat/message/{message}', [TransactionMessageController::class, 'destroy'])->name('transaction.message.delete');
+    Route::delete('/transaction/{message}/delete', [TransactionMessageController::class, 'destroy'])->name('transaction.message.delete');
     // 取引完了（評価入力）
     Route::post('/transaction/{transaction}/rate', [RatingController::class, 'store'])->name('transaction.rate');
 
@@ -91,5 +94,6 @@ Route::middleware('auth')->group(function () {
         return redirect('/');
     });
 });
+
 
 

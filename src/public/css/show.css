@@ -56,8 +56,13 @@
     justify-content: center;
     align-items: center;
     gap: 40px;
-    margin: 0 150px;
-    margin-bottom: 30px;
+    margin: 0 150px 30px;
+}
+
+.profile-info-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 20px;
 }
 
 /* プロフィール画像（丸く＆未設定時の背景） */
@@ -89,11 +94,27 @@
     font-size: 24px;
     font-weight: bold;
     margin: 0;
+    white-space: nowrap;
+}
+
+.name{
+    padding-bottom: 5px;
+}
+
+.star {
+    font-size: 24px;
+    color: #ccc;
+    /* グレー */
+}
+
+.star.filled {
+    color: gold;
+    /* 黄色 */
 }
 
 /* プロフィール編集ボタン */
 .edit-profile-button {
-    margin-left: auto;
+    margin-left: 0;
     padding: 10px 20px;
     border: 1px solid #ff5c5c;
     color: #ff5c5c;
@@ -107,6 +128,20 @@
 .edit-profile-button:hover {
     background-color: #ff5c5c;
     color: white;
+}
+
+/* レスポンシブ: タブレットでは縦並びに */
+@media (max-width: 850px) {
+    /* .profile-section {
+        flex-direction: column;
+        margin: 0 20px 30px;
+        gap: 20px;
+    } */
+
+    .profile-info-wrapper {
+        flex-direction: column;
+        align-items: center;
+    }
 }
 
 /* タブメニュー */

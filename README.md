@@ -19,7 +19,7 @@
     DB_PASSWORD=laravel_pass
 
     MAIL_MAILER=smtp
-    MAIL_HOST=mailhog
+    MAIL_HOST=mail
     MAIL_PORT=1025
     MAIL_USERNAME=null
     MAIL_PASSWORD=null
@@ -70,6 +70,19 @@
 ### 新機能
  <!-- チャット機能（リアルタイム対応） -->
 + チャット機能（非リアルタイム：リロードで反映）
+
+### ユーザーデータ
++ name: ユーザーA
++ email: usera@example.com
++ password: password
+
++ name:ユーザーB
++ email: userb@example.com
++ password: password
+
++ name:　ユーザーC
++ email: userc@example.com
++ password: password
 
 ### 使用技術
 + PHP8.3.0

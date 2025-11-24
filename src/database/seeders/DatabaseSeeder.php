@@ -14,13 +14,15 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(10)->create();
-
         $this->call([
-        ConditionsTableSeeder::class,
-        CategoriesTableSeeder::class,
-        ProductsTableSeeder::class,
-        CategoryProductTableSeeder::class,
-    ]);
+            UsersTableSeeder::class,
+            ConditionsTableSeeder::class,
+            ProductsTableSeeder::class,
+            CategoriesTableSeeder::class,
+            CategoryProductTableSeeder::class,
+        ]);
+
+        User::factory(10)->create();
+        // 明示的なユーザー作成を優先し、Factory での作成を後にする
     }
 }

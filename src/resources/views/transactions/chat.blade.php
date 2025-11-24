@@ -64,7 +64,10 @@
                     <div class="meta">
                         <span class="time">{{ $message->created_at->format('H:i') }}</span>
                         @if($message->sender_id === auth()->id())
-                            <a href="#">編集</a>
+                            <!-- <a href="#">編集</a> -->
+                            <form action="{{ route('transaction.message.edit', $message->id) }}" method="GET" class="inline">
+                                <button type="submit">編集</button>
+                            </form>
                             <form action="{{ route('transaction.message.delete', $message->id) }}" method="POST" class="inline">
                                 @csrf @method('DELETE')
                                 <button type="submit">削除</button>
@@ -82,6 +85,9 @@
 
             @if ($errors->has('message'))
                 <div class="error-message">{{ $errors->first('message') }}</div>
+            @endif
+            @if ($errors->has('image'))
+                <div class="error-message">{{ $errors->first('image') }}</div>
             @endif
             
             <input type="text" name="message" id="chat-input" placeholder="取引メッセージを記入してください">

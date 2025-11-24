@@ -35,7 +35,7 @@ class StoreChatMessageRequest extends FormRequest
             'message.required_without' => '本文を入力してください',
             'message.max' => '本文は400文字以内で入力してください',
             // 'image.image' => '画像ファイルをアップロードしてください',
-            'image.mimes' => '「.png」または「.jpeg」形式でアップロードしてください',
+            'image.image' => '「.png」または「.jpeg」形式でアップロードしてください',
             'image.max' => '画像サイズは2MB以下にしてください',
         ];
     }
