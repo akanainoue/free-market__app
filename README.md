@@ -10,29 +10,29 @@
 2. composer install
 3. cp .env.example .env 
    「.env.example」ファイルを 「.env」ファイルに命名を変更。または、新しく.envファイルを作成
-4. .envに以下の環境変数を追加
-    DB_CONNECTION=mysql
-    DB_HOST=mysql
-    DB_PORT=3306
-    DB_DATABASE=laravel_db
-    DB_USERNAME=laravel_user
-    DB_PASSWORD=laravel_pass
+4. .envに以下の環境変数を追加  
+    DB_CONNECTION=mysql    
+    DB_HOST=mysql  
+    DB_PORT=3306  
+    DB_DATABASE=laravel_db  
+    DB_USERNAME=laravel_user  
+    DB_PASSWORD=laravel_pass  
 
-    MAIL_MAILER=smtp
-    MAIL_HOST=mail
-    MAIL_PORT=1025
-    MAIL_USERNAME=null
-    MAIL_PASSWORD=null
-    MAIL_ENCRYPTION=null
-    MAIL_FROM_ADDRESS=info@example.com
-    MAIL_FROM_NAME="${APP_NAME}"
+    MAIL_MAILER=smtp  
+    MAIL_HOST=mail  
+    MAIL_PORT=1025  
+    MAIL_USERNAME=null  
+    MAIL_PASSWORD=null  
+    MAIL_ENCRYPTION=null  
+    MAIL_FROM_ADDRESS=info@example.com  
+    MAIL_FROM_NAME="${APP_NAME}"  
 
-    STRIPE_KEY=your_stripe_key
-    STRIPE_SECRET=your_stripe_secret
+    STRIPE_KEY=your_stripe_key  
+    STRIPE_SECRET=your_stripe_secret  
 
     <!-- BROADCAST_DRIVER=pusher -->
 
-    FILESYSTEM_DRIVER=public
+    FILESYSTEM_DRIVER=public  
 
     <!-- PUSHER_APP_ID=your_app_id
     PUSHER_APP_KEY=your_app_key
@@ -43,13 +43,13 @@
     php artisan key:generate
 
 6. マイグレーションの実行
-    php artisan config:clear
-    php artisan cache:clear
-    php artisan config:cache
-    php artisan migrate
+    php artisan config:clear  
+    php artisan cache:clear  
+    php artisan config:cache  
+    php artisan migrate  
 
 7. シーディングの実行
-    php artisan db:seed
+    php artisan db:seed  
 
 8. シンボリックリンク作成
     php artisan storage:link
@@ -71,19 +71,19 @@
  <!-- チャット機能（リアルタイム対応） -->
 + チャット機能（非リアルタイム：リロードで反映）
 
-### ユーザーデータ
-+ name: ユーザーA
-+ email: usera@example.com
-+ password: password
-
-+ name:ユーザーB
-+ email: userb@example.com
-+ password: password
-
-+ name:　ユーザーC
-+ email: userc@example.com
-+ password: password
-
+## ユーザーデータ
+  name: ユーザーA  
+  email: usera@example.com  
+  password: password
+  ---
+  name:ユーザーB  
+  email: userb@example.com  
+  password: password
+  ---
+ name:　ユーザーC  
+ email: userc@example.com  
+ password: password  
+ ---
 ### 使用技術
 + PHP8.3.0
 + Laravel8.83.27
